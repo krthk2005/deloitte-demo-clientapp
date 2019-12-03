@@ -1,0 +1,55 @@
+<form class="add-villa mt-20" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="form-group" [ngClass]="{ 'has-error': invalidVillaName() }">
+    <label for="villa_name" class="control-label">Villa Name</label>
+    <input
+      type="text"
+      formControlName="villa_name"
+      class="form-control"
+      id="villa_name"
+      name="villa_name"
+      maxlength="50"
+      placeholder="Enter Villa Name"
+    />
+    <p *ngIf="invalidVillaName()" id="villa_name_error" class="help-block">
+      {{ this.serviceErrors.villa_name || "Invalid villa name." }}
+    </p>
+  </div>
+
+  <div class="form-group" [ngClass]="{ 'has-error': invalidCityName() }">
+    <!-- Last Name -->
+    <label for="city_name" class="control-label">City Name</label>
+    <input
+      type="text"
+      formControlName="city_name"
+      class="form-control"
+      id="city_name"
+      name="city_name"
+      maxlength="50"
+      placeholder="Enter City Name"
+    />
+    <p *ngIf="invalidCityName()" id="city_name_error" class="help-block">
+      {{ this.serviceErrors.city_name || "Invalid city name." }}
+    </p>
+  </div>
+
+  <div class="form-group" [ngClass]="{ 'has-error': invalidPrice() }">
+    <label for="price" class="control-label">Price per night</label>
+    <input
+      type="text"
+      formControlName="price"
+      class="form-control"
+      id="price"
+      name="price"
+      maxlength="25"
+      min="1"
+      placeholder="Enter Amount in GBP"
+    />
+    <p *ngIf="invalidPrice()" id="price_error" class="help-block">
+      {{ this.serviceErrors.price || "Invalid amount." }}
+    </p>
+  </div>
+
+  <div class="form-group has-error">
+    <button type="submit" class="btn btn-primary">Register Villa</button>
+  </div>
+</form>

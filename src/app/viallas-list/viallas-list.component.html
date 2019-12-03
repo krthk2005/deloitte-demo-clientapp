@@ -1,0 +1,42 @@
+<div class="container mt-20">
+  <div class="row">
+    <div class="col-sm">
+      <strong>S.No</strong>
+    </div>
+    <div class="col-sm">
+      <strong>Villa Name</strong>
+    </div>
+    <div class="col-sm">
+      <strong>City Name</strong>
+    </div>
+    <div class="col-sm">
+      <strong>Price</strong>
+    </div>
+    <div class="col-sm">
+      <strong>Temperature</strong>
+    </div>
+  </div>
+  <hr />
+  <div
+    class="row"
+    *ngFor="let villa of villas; let i = index"
+    [attr.data-index]="i"
+  >
+    <div class="col-sm bt-line">
+      {{ i + 1 }}
+    </div>
+    <div class="col-sm bt-line">
+      {{ villa.villa_name }}
+    </div>
+    <div class="col-sm bt-line">
+      {{ villa.city_name }}
+    </div>
+    <div class="col-sm bt-line">
+      {{ villa.price | currency }}
+    </div>
+    <div class="col-sm bt-line" [innerHTML]="villa.temperature"></div>
+  </div>
+  <div *ngIf="villas?.length == undifined || villas.length == 0">
+    No Villas added. Please click on Add tab to add Villa.
+  </div>
+</div>
